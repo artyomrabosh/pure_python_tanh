@@ -12,7 +12,8 @@ def matrix_elementwise_binary(x: Matrix2d, y: Matrix2d, fun: Callable) -> Matrix
     return [[fun(x[i][j], y[i][j]) for i in range(len(x))] for j in range(len(x[0]))]
 
 def matrix_multiplication(x: Matrix2d, y: Matrix2d, fun: Callable) -> Matrix2d:
-    return [[fun(x[i][j], y[i][j]) for i in range(len(x))] for j in range(len(x[0]))]
+    return [[sum(i * j for i, j in zip(r, c)) for c in zip(*y)] for r in x]
+
 
 
 class Tanh():
